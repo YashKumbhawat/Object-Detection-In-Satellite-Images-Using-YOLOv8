@@ -1,3 +1,5 @@
+DATASET LINK : https://docs.ultralytics.com/datasets/detect/xview/#dataset-yaml
+
 PROJECT OVERVIEW:
 
 This project performs object detection on high-resolution satellite images using the xView dataset and YOLOv8. The xView dataset contains over 1 million bounding boxes across 60 classes such as aircraft, vehicles, ships, buildings, cranes, etc.

@@ -81,9 +81,7 @@ Number of classes (nc = 60)
 Full list of xView class names
 
 
-(5)
-
-TRAIN YOLOv8m
+(5) TRAIN YOLOv8m
 
 YOLOv8m is trained using:
 

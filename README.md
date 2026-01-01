@@ -52,4 +52,62 @@ All `.tif` images are converted to `.jpg` format and stored in new directories s
 - Each annotation in `xView_train.geojson` is parsed  
 - Bounding boxes are converted from: ``` (x_min, y_min, x_max, y_max) ```
 - to YOLO format: ``` (class_id, x_center, y_center, width, height) ```
-- 
+- All values are normalized to the range **[0, 1]**
+- A class-mapping list converts xView `type_id`s into YOLO class IDs (0–59)
+- One `.txt` label file is created per image  
+
+---
+
+## 📁 Step 2: YOLO Directory Structure
+
+The following directory structure is created automatically to meet YOLOv8 requirements:
+
+```
+images/
+├── train/
+└── val/
+
+labels/
+├── train/
+└── val/
+```
+
+
+---
+
+## 🔀 Step 3: Train / Validation Split (90 / 10)
+
+- All images are randomly shuffled  
+- Dataset split:
+  - **90%** for training  
+  - **10%** for validation  
+- Images and corresponding labels are copied into:
+  - `images/train`, `images/val`
+  - `labels/train`, `labels/val`
+
+---
+
+## ⚙️ Step 4: Create `data.yaml`
+
+A YOLOv8 configuration file is created containing:
+- Dataset base path  
+- Training and validation directory paths  
+- Number of classes (`nc = 60`)  
+- Complete list of xView class names  
+
+---
+
+## 🧠 Step 5: Train YOLOv8m
+
+YOLOv8m is trained using the following configuration:
+
+```python
+model = YOLO("yolov8m.pt")
+model.train(
+    data="data.yaml",
+    epochs=175,
+    imgsz=640,
+    batch=4,
+    workers=2
+)
+```

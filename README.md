@@ -1,4 +1,4 @@
-# Object Detection on xView Satellite Imagery using YOLOv8 with Super-Resolution
+# Object Detection on xView Dataset using YOLOv8 with Super-Resolution
 
 ## 📌 Project Overview
 This project performs **object detection on high-resolution satellite images** using the **xView dataset** and **YOLOv8**.  

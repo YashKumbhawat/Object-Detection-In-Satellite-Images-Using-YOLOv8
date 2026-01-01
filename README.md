@@ -50,4 +50,6 @@ All `.tif` images are converted to `.jpg` format and stored in new directories s
 
 ### 2️⃣ Convert `.geojson` → YOLO `.txt` Labels
 - Each annotation in `xView_train.geojson` is parsed  
-- Bounding boxes are converted from:
+- Bounding boxes are converted from: ``` (x_min, y_min, x_max, y_max) ```
+- to YOLO format: ``` (class_id, x_center, y_center, width, height) ```
+- 

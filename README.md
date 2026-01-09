@@ -111,3 +111,29 @@ model.train(
     workers=2
 )
 ```
+
+## 🧪 Step 6: Select Validation Images for Testing
+
+- 150 images are randomly selected from the validation set
+- Selected images are copied into: ```/content/temp_test_150```
+- These images are used for:
+  - Baseline YOLO inference
+  - Super-resolution inference
+  - Side-by-side qualitative visualization
+  - Detection comparison
+
+## 📊 Step 7: Baseline YOLO Inference (No Super-Resolution)
+
+- YOLOv8 inference is performed on the original validation images
+- No super-resolution is applied in this step
+- Inference is executed using: ```model.predict(source="temp_test_150")```
+- Detection results are saved in: ```results_no_SR/predictions```
+- This serves as the baseline performance for comparison
+
+## 🔍 Step 8: Super-Resolution (Bicubic ×2) + YOLO Inference
+
+- Validation images are upscaled by a factor of 2× using bicubic interpolation
+- Bicubic interpolation is applied using: ```cv2.INTER_CUBIC```
+- Super-resolved images are stored in: ```temp_test_150_SR```
+- YOLOv8 inference is performed again on the SR images
+- Detection results are saved in: ```results_SR/predictions```

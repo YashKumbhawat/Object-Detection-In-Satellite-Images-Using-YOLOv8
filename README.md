@@ -29,7 +29,6 @@ In addition to baseline detection, this project investigates whether **Super-Res
 ## 🏗️ Methodology
 The project follows a structured pipeline consisting of **dataset preprocessing**, **YOLOv8 training**, and **Super-Resolution–based evaluation**.
 
----
 
 ## 🔄 Step 1: Dataset Preprocessing
 
@@ -46,7 +45,6 @@ All `.tif` images are converted to `.jpg` format and stored in new directories s
 - `train_images_jpg`
 - `val_images_jpg`
 
----
 
 ### 2️⃣ Convert `.geojson` → YOLO `.txt` Labels
 - Each annotation in `xView_train.geojson` is parsed  
@@ -56,7 +54,6 @@ All `.tif` images are converted to `.jpg` format and stored in new directories s
 - A class-mapping list converts xView `type_id`s into YOLO class IDs (0–59)
 - One `.txt` label file is created per image  
 
----
 
 ## 📁 Step 2: YOLO Directory Structure
 
@@ -73,8 +70,6 @@ labels/
 ```
 
 
----
-
 ## 🔀 Step 3: Train / Validation Split (90 / 10)
 
 - All images are randomly shuffled  
@@ -85,7 +80,6 @@ labels/
   - `images/train`, `images/val`
   - `labels/train`, `labels/val`
 
----
 
 ## ⚙️ Step 4: Create `data.yaml`
 
@@ -95,7 +89,6 @@ A YOLOv8 configuration file is created containing:
 - Number of classes (`nc = 60`)  
 - Complete list of xView class names  
 
----
 
 ## 🧠 Step 5: Train YOLOv8m
 
@@ -111,7 +104,7 @@ model.train(
     workers=2
 )
 ```
----
+
 
 ## 🧪 Step 6: Select Validation Images for Testing
 
@@ -123,7 +116,7 @@ model.train(
   - Side-by-side qualitative visualization
   - Detection comparison
 
----
+
 
 ## 📊 Step 7: Baseline YOLO Inference (No Super-Resolution)
 
@@ -133,7 +126,7 @@ model.train(
 - Detection results are saved in: ```results_no_SR/predictions```
 - This serves as the baseline performance for comparison
 
----
+
 
 ## 🔍 Step 8: Super-Resolution (Bicubic ×2) + YOLO Inference
 
@@ -187,4 +180,18 @@ model.train(
 - xView Dataset
 
 ---
+
+
+## 👤 Author
+
+**Yash Kumbhawat**  
+Department of Information Technology,  
+NITK  
+
+---
+
+## 📜 License
+
+This project is intended for **academic and educational purposes only**.  
+You are free to use and modify the code with proper attribution.
 

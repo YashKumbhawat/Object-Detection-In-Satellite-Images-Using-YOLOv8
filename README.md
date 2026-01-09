@@ -111,6 +111,7 @@ model.train(
     workers=2
 )
 ```
+---
 
 ## 🧪 Step 6: Select Validation Images for Testing
 
@@ -122,6 +123,8 @@ model.train(
   - Side-by-side qualitative visualization
   - Detection comparison
 
+---
+
 ## 📊 Step 7: Baseline YOLO Inference (No Super-Resolution)
 
 - YOLOv8 inference is performed on the original validation images
@@ -130,6 +133,8 @@ model.train(
 - Detection results are saved in: ```results_no_SR/predictions```
 - This serves as the baseline performance for comparison
 
+---
+
 ## 🔍 Step 8: Super-Resolution (Bicubic ×2) + YOLO Inference
 
 - Validation images are upscaled by a factor of 2× using bicubic interpolation
@@ -137,3 +142,49 @@ model.train(
 - Super-resolved images are stored in: ```temp_test_150_SR```
 - YOLOv8 inference is performed again on the SR images
 - Detection results are saved in: ```results_SR/predictions```
+
+---
+
+## 📊 Key Observations
+
+- YOLOv8 performs well on large and medium-sized objects in high-resolution satellite imagery
+- Small and densely packed objects benefit more from higher image resolution
+- Bicubic super-resolution improves visual clarity, especially for fine details
+- Detection improvements with super-resolution are class-dependent
+- Super-resolution increases inference time due to larger image sizes
+
+
+---
+
+## 📈 Results Summary
+
+- Baseline YOLOv8 inference provides strong overall detection performance
+- Super-resolution–based inference shows:
+- Improved bounding box confidence for some small objects
+- Better visual separation in cluttered regions
+- Qualitative comparisons indicate clearer object boundaries in SR images
+
+---
+
+## 🔮 Future Work
+
+- Integrate learning-based super-resolution models (e.g., ESRGAN, Real-ESRGAN)
+- Perform quantitative evaluation using mAP@0.5 and mAP@0.5:0.95
+- Extend experiments to the full validation and test datasets
+- Explore multi-scale training and inference strategies
+- Optimize inference speed for real-time deployment
+
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- PyTorch
+- Ultralytics YOLOv8
+- OpenCV
+- NumPy
+- Matplotlib
+- xView Dataset
+
+---
+
